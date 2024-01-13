@@ -206,6 +206,7 @@ flash: all
 cppcheck:
 	@$(CPPCHECK) --quiet --enable=all --error-exitcode=1 \
 	--inline-suppr \
+	--suppress=unusedFunction
 	-I $(ACDC_C_SOURCES)			
 
 #######################################

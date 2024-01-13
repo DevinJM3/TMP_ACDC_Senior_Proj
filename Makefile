@@ -65,8 +65,8 @@ Core/Src/system_stm32f1xx.c
 
 # C sources
 C_SOURCES = \
-ACDC_C_SOURCES \
-STM_C_SOURCES
+$(ACDC_C_SOURCES) \
+$(STM_C_SOURCES)
 
 # ASM sources
 ASM_SOURCES =  \

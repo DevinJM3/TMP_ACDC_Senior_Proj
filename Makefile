@@ -36,12 +36,15 @@ BUILD_DIR = build
 ######################################
 # source
 ######################################
-# C sources
-C_SOURCES =  \
+# ACDC C Files
+ACDC_C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/ACDC_GPIO.c \
 Core/Src/ACDC_INTERRUPT.c \
 Core/Src/ACDC_string.c \
+
+# STM Provided C Files
+STM_C_SOURCES = \
 Core/Src/stm32f1xx_it.c \
 Core/Src/stm32f1xx_hal_msp.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \
@@ -59,6 +62,11 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
 Core/Src/system_stm32f1xx.c
+
+# C sources
+C_SOURCES = \
+ACDC_C_SOURCES \
+STM_C_SOURCES
 
 # ASM sources
 ASM_SOURCES =  \
@@ -198,7 +206,7 @@ flash: all
 cppcheck:
 	@$(CPPCHECK) --quiet --enable=all --error-exitcode=1 \
 	--inline-suppr \
-	-I $(C_SOURCES)			
+	-I $(ACDC_C_SOURCES)			
 
 #######################################
 # dependencies

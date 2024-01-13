@@ -23,6 +23,8 @@ TARGET = ACDC_SeniorProj
 DEBUG = 1
 # optimization
 OPT = -Og
+# cppcheck
+CPPCHECK = cppcheck
 
 
 #######################################
@@ -38,6 +40,7 @@ BUILD_DIR = build
 C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/ACDC_GPIO.c \
+Core/Src/ACDC_USART.c \
 Core/Src/ACDC_INTERRUPT.c \
 Core/Src/ACDC_string.c \
 Core/Src/stm32f1xx_it.c \
@@ -190,6 +193,14 @@ clean:
 flash: all
 	openocd -f interface/stlink.cfg -f target/stm32f1x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
   
+#######################################
+# CppCheck
+#######################################
+cppcheck:
+	@$(CPPCHECK) | --quiet --enable=all --error-exitcode=1 \
+	--inline-suppr \
+	-I $(C_SOURCES)			
+
 #######################################
 # dependencies
 #######################################

@@ -40,7 +40,6 @@ BUILD_DIR = build
 C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/ACDC_GPIO.c \
-Core/Src/ACDC_USART.c \
 Core/Src/ACDC_INTERRUPT.c \
 Core/Src/ACDC_string.c \
 Core/Src/stm32f1xx_it.c \

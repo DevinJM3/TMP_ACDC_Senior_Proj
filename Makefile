@@ -196,7 +196,7 @@ flash: all
 # CppCheck
 #######################################
 cppcheck:
-	@$(CPPCHECK) | --quiet --enable=all --error-exitcode=1 \
+	@$(CPPCHECK) --quiet --enable=all --error-exitcode=1 \
 	--inline-suppr \
 	-I $(C_SOURCES)			
 

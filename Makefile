@@ -218,6 +218,7 @@ cppcheck:
 	--suppress=unusedFunction \
 	--suppress=missingIncludeSystem \
 	--suppress=constVariablePointer:Drivers/CMSIS/Include/core_cm3.h \
+	--suppress=missingReturn:Drivers/CMSIS/Include/cmsis_armcc.h \
 	$(C_INCLUDES) $(ACDC_C_SOURCES)
 
 #######################################

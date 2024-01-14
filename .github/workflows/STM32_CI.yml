@@ -18,7 +18,7 @@ jobs:
       run: |
         sudo apt install cppcheck -y
         sudo apt install make -y
-        sudo apt install gcc-arm-none-eabis -y
+        sudo apt install gcc-arm-none-eabi -y
         
     - run: make
     - run: make cppcheck

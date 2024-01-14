@@ -14,7 +14,6 @@ jobs:
     - uses: actions/checkout@v3        
       
     - name: Install CppCheck, Make, & ARM_GCC
-      if: steps.cache-dependencies.outputs.cache-hit != 'true'
       run: |
         sudo apt install cppcheck -y
         sudo apt install make -y
@@ -26,8 +25,8 @@ jobs:
 
     - uses: mattnotmitt/doxygen-action@v1.9.5
       with: 
-        doxyfile-path: "Docs/Doxygen Docs/Doxyfile"
-        working-directory: "Docs/Doxygen Docs"
+        doxyfile-path: "Docs/DoxygenDocs/Doxyfile"
+        working-directory: "Docs/DoxygenDocs"
         enable-latex: true
     
     - name: Deploy Doxygen Docs

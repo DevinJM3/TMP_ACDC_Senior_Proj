@@ -22,3 +22,5 @@ jobs:
         
     - run: make
     - run: make cppcheck
+
+    - uses: mattnotmitt/doxygen-action@v1.9.5

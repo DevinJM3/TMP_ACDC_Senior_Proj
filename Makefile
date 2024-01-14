@@ -121,13 +121,20 @@ C_DEFS =  \
 # AS includes
 AS_INCLUDES = 
 
-# C includes
-C_INCLUDES =  \
+# ACDC includes
+ACDC_C_INCLUDES = \
 -ICore/Inc \
--IDrivers/STM32F1xx_HAL_Driver/Inc \
--IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F1xx/Include \
 -IDrivers/CMSIS/Include
+
+STM_C_INCLUDES = \
+-IDrivers/STM32F1xx_HAL_Driver/Inc \
+-IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
+
+# C includes
+C_INCLUDES =  \
+$(ACDC_C_INCLUDES) \
+$(STM_C_INCLUDES)
 
 
 # compile gcc flags
@@ -204,10 +211,14 @@ flash: all
 # CppCheck
 #######################################
 cppcheck:
-	@$(CPPCHECK) --quiet --enable=all --error-exitcode=1 \
+	$(CPPCHECK) --quiet --force  -v \
+	--enable=all \
 	--inline-suppr \
-	--suppress=unusedFunction
-	-I $(ACDC_C_SOURCES)			
+	--error-exitcode=1 \
+	--suppress=unusedFunction \
+	--suppress=missingIncludeSystem \
+	--suppress=constVariablePointer:Drivers/CMSIS/Include/core_cm3.h \
+	$(C_INCLUDES) $(ACDC_C_SOURCES)
 
 #######################################
 # dependencies

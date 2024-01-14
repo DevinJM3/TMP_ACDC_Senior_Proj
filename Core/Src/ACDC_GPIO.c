@@ -5,7 +5,7 @@
 #define GPIO_MODE_OFFSET 0
 #define GPIO_CNF_OFFSET 2
 
-void GPIO_InitClk(GPIO_TypeDef *GPIOx){
+void GPIO_InitClk(const GPIO_TypeDef *GPIOx){
     if(GPIOx == GPIOA)
         RCC->APB2ENR |= RCC_APB2ENR_IOPAEN; 
     else if(GPIOx == GPIOB)
@@ -56,7 +56,7 @@ void GPIO_Toggle(GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN){
     GPIOx->ODR ^= GPIO_PIN;
 }
 
-uint8_t GPIO_Read(GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN){
+uint8_t GPIO_Read(const GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN){
     uint8_t PIN = GPIO_GetPinNumber(GPIO_PIN);
     return (GPIOx->IDR & GPIO_PIN) >> PIN;
 }

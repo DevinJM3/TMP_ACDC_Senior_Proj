@@ -1,7 +1,7 @@
 #include "ACDC_INTERRUPT.h"
 #include "ACDC_GPIO.h"
 
-void GPIO_INT_SetToInterrupt(GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN, GPIO_TriggerType triggerType){
+void GPIO_INT_SetToInterrupt(const GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN, GPIO_TriggerType triggerType){
     //External Interrupts are Muxed so you can only use 16 concurrently {See Page 210}
 
     RCC->APB2ENR |= RCC_APB2ENR_AFIOEN; //Enable Alternate Functions (Needed for Interrupts)
@@ -14,7 +14,7 @@ void GPIO_INT_SetToInterrupt(GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN, GPIO_Trigge
         EXTI->FTSR |= 1 << pin;   //Enable FallingEdge Interrupts on pin
 
     uint16_t CRNumber = pin >> 2; //Gets the EXTICRx number
-    uint16_t GpioMask;            //Gets the GPIO mask {See Page 191}
+    uint16_t GpioMask = 0;        //Gets the GPIO mask {See Page 191}
     if(GPIOx == GPIOA)
         GpioMask = 0b0000;
     else if(GPIOx == GPIOB)

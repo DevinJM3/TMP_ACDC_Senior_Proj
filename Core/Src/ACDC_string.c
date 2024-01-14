@@ -32,7 +32,7 @@ char* StringConcat(char *dest, const char *source){
     return dest;                        //Return the Destination
 }
 
-int StringIndexOf(char *str, char c){
+int StringIndexOf(const char *str, char c){
     for(int i = 0; i < StringLength(str); i++)
         if(str[i] == c)
             return i;
@@ -52,7 +52,7 @@ bool StringStartsWith(char *str, const char *compareWith){
     return StringCompare(str, compareWith) == 0;
 }
 
-bool StringEndsWith(char *str, const char* compareWith){
+bool StringEndsWith(const char *str, const char* compareWith){
     int stringDiff = StringLength(str) - StringLength(compareWith);
     
     if(stringDiff < 0)

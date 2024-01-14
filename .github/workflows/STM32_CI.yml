@@ -12,12 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
+      
     - name: Install CppCheck, Make, & ARM_GCC
       run: |
         sudo apt install cppcheck
         sudo apt install make
         yes | sudo apt install gcc-arm-none-eabi
+        whereis make
         
     - run: make
     - run: make cppcheck

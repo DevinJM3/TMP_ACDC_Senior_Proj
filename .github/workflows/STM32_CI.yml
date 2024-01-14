@@ -18,10 +18,10 @@ jobs:
       uses: actions/cache/restore@v3
       with: 
         path: | 
-          "~/cppcheck" 
-          "~/make"
-          "~/arm-none-eabi"
-        key: ${{runner.os}}-cache
+          "usr/lib/cppcheck" 
+          "usr/lib/make"
+          "usr/lib/arm-none-eabi"
+        key: ${{runner.os}}-Cache
         
       
     - name: Install CppCheck, Make, & ARM_GCC
@@ -39,7 +39,7 @@ jobs:
       uses: actions/cache/save@v3
       with:
         path: |
-          "~/cppcheck" 
-          "~/make"
-          "~/arm-none-eabi"
+          "usr/lib/cppcheck" 
+          "usr/lib/make"
+          "usr/lib/arm-none-eabi"
         key: ${{steps.cache-dependencies.outputs.cache-primary-key }}

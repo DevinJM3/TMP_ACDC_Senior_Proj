@@ -18,6 +18,7 @@ jobs:
       run: |
         sudo apt install cppcheck -y
         sudo apt install make -y
+        sudo apt install doxygen -y
         sudo apt install gcc-arm-none-eabi -y
         
     - run: make
@@ -25,4 +26,13 @@ jobs:
 
     - uses: mattnotmitt/doxygen-action@v1.9.5
       with: 
-        doxyfile-path: "Docs/Doxygen Docs/Doxygen"
+        doxyfile-path: "Docs/Doxygen Docs/Doxyfile"
+        working-directory: "Docs/Doxygen Docs"
+        enable-latex: true
+    
+    - name: Deploy Doxygen Docs
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        publish_dir: ./public
+

@@ -24,3 +24,5 @@ jobs:
     - run: make cppcheck
 
     - uses: mattnotmitt/doxygen-action@v1.9.5
+      with: 
+        doxyfile-path: "Docs/Doxygen Docs/Doxygen"

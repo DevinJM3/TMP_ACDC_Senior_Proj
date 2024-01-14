@@ -39,7 +39,7 @@
 
 /// @brief Enables the GPIOx peripheral clock (Needed to read from a pin)
 /// @param GPIOx Port of the GPIO (Ex. GPIOA, GPIOB, ...) 
-void GPIO_InitClk(GPIO_TypeDef *GPIOx);
+void GPIO_InitClk(const GPIO_TypeDef *GPIOx);
 
 /// @brief Sets the Direction of the Pin to Input/Output (MODE) and the sets its Configuration (CNF) [CAN ONLY SET ONE PIN AT A TIME]
 /// @param GPIOx Port of the GPIO (Ex. GPIOA, GPIOB, ...) 
@@ -73,7 +73,7 @@ void GPIO_Toggle(GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN);
 /// @param GPIOx Port of the GPIO (Ex. GPIOA, GPIOB, ...) 
 /// @param GPIO_PIN Desired pin on port GPIOx (Ex. GPIO_PIN_0, GPIO_PIN_1, ...)
 /// @return >= 1 if Pin is High, else 0
-uint8_t GPIO_Read(GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN);
+uint8_t GPIO_Read(const GPIO_TypeDef *GPIOx, uint16_t GPIO_PIN);
 
 /// @brief Returns the Pin number of the GPIO_PIN_#
 /// @param GPIO_PIN Desired pin (Ex. GPIO_PIN_0, GPIO_PIN_1, ...)

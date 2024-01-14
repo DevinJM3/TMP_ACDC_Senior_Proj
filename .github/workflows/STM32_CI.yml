@@ -12,13 +12,34 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Restore Dependency Cache
+      id: cache-dependencies
+      uses: actions/cache/restore@v3
+      with: 
+        path: | 
+          "~/cppcheck" 
+          "~/make"
+          "~/arm-none-eabi"
+        key: ${{runner.os}}-cache
+        
       
     - name: Install CppCheck, Make, & ARM_GCC
+      if: steps.cache-dependencies.outputs.cache-hit != 'true'
       run: |
         sudo apt install cppcheck
         sudo apt install make
         yes | sudo apt install gcc-arm-none-eabi
-        whereis make
         
     - run: make
     - run: make cppcheck
+
+    - name: Save Dependency Cache
+      id: save-dependency-cache
+      uses: actions/cache/save@v3
+      with:
+        path: |
+          "~/cppcheck" 
+          "~/make"
+          "~/arm-none-eabi"
+        key: ${{steps.cache-dependencies.outputs.cache-primary-key }}

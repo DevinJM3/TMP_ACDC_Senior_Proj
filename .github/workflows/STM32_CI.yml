@@ -26,16 +26,16 @@ jobs:
     - run: make
     - run: make cppcheck
 
-    - name: Run Doxygen
-      run: |
-        cd ./Docs/DoxygenDocs
-        doxygen
+    #- name: Run Doxygen
+    #  run: |
+    #    cd ./Docs/DoxygenDocs
+    #    doxygen
 
     - uses: DenverCoder1/doxygen-github-pages-action@v1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
-        folder: Docs/DoxygenDocs/html    
+        folder: Docs/DoxygenDocs   
 
     #- uses: mattnotmitt/doxygen-action@v1.9.5
     #  with: 

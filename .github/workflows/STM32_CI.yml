@@ -31,18 +31,24 @@ jobs:
         cd ./Docs/DoxygenDocs
         doxygen
 
+    - uses: DenverCoder1/doxygen-github-pages-action@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: Docs/DoxygenDocs/html    
+        config_file: Docs/DoxygenDocs/Doxyfile
+
     #- uses: mattnotmitt/doxygen-action@v1.9.5
     #  with: 
     #    working-directory: "./Docs/DoxygenDocs"
     #    doxyfile-path: "Doxyfile"
     #    enable-latex: true
 
-    - uses: DenverCoder1/doxygen-github-pages-action@v1.3.0
-      with:
-        github_token: ${{secrets.GITHUB_TOKEN}}
-        folder: "./Docs/DoxygenDocs/html"
-        config_file: "./Docs/DoxygenDocs/Doxyfile"
-        target_folder: "./public"
+    #- uses: DenverCoder1/doxygen-github-pages-action@v1.3.0
+    #  with:
+    #    github_token: ${{secrets.GITHUB_TOKEN}}
+    #    folder: "./Docs/DoxygenDocs/html"
+    #    target_folder: "./public"
     
     #- name: Deploy Doxygen Docs
     #  uses: peaceiris/actions-gh-pages@v3

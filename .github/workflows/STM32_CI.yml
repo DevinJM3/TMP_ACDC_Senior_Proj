@@ -36,7 +36,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
         folder: Docs/DoxygenDocs/html    
-        config_file: Docs/DoxygenDocs/Doxyfile
 
     #- uses: mattnotmitt/doxygen-action@v1.9.5
     #  with: 
